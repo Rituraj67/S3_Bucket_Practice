@@ -4,7 +4,7 @@ import ImageUpload from './components/ImageUpload';
 import ImageGallery from './components/ImageGallery';
 import axios from 'axios';
 
-
+//nothing
 // Mock API function to simulate fetching images from backend
 const fetchImages = async () => {
   

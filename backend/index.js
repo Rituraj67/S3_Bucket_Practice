@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Configure CORS to allow only the specified origin
-const allowedOrigin = "https://s3bucket.riturajs.me/";
+const allowedOrigin = "https://s3bucket.riturajs.me";
 app.use(
   cors({
     origin: allowedOrigin,
