@@ -3,7 +3,7 @@ import { getURL, putURL, uploadToS3 } from "./config/s3_config.js";
 import { upload } from "./config/multer.js";
 import cors from "cors";
 import { startDB } from "./config/mongo.js";
-import S3image from "./models/s3image.js";
+import S3image from "./models/S3image.js";
 
 
 import dotenv from "dotenv";
