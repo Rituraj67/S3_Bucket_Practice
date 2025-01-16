@@ -5,18 +5,24 @@ import cors from "cors";
 import { startDB } from "./config/mongo.js";
 import S3image from "./models/S3image.js";
 
-
 import dotenv from "dotenv";
 dotenv.config();
-
 
 const app = express();
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
+// Configure CORS to allow only the specified origin
+const allowedOrigin = "https://s3bucket.riturajs.me/";
+app.use(
+  cors({
+    origin: allowedOrigin,
+    methods: ["GET", "POST"], // Restrict allowed HTTP methods
+    credentials: true, // Allow credentials if needed
+  })
+);
 
 startDB().catch(console.error);
 
@@ -27,8 +33,7 @@ app.get("/", async (req, res) => {
 
 app.get("/getimg", async (req, res) => {
   try {
-    const data = await S3image.find({}); 
-
+    const data = await S3image.find({});
 
     const urls = await Promise.all(
       data.map(async (e) => {
