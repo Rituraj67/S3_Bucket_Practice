@@ -2,9 +2,13 @@ import express from "express";
 import { getURL, putURL, uploadToS3 } from "./config/s3_config.js";
 import { upload } from "./config/multer.js";
 import cors from "cors";
-import dotenv from "dotenv";
 import { startDB } from "./config/mongo.js";
 import S3image from "./models/s3image.js";
+
+
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 
@@ -13,7 +17,6 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-dotenv.config();
 
 startDB().catch(console.error);
 
